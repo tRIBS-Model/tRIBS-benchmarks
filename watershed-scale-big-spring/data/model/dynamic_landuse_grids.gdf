@@ -1,4 +1,4 @@
-7
+9
 35.11 112.65 -7
 VH data/model/landuse/VH asc
 LA data/model/landuse/LA asc
@@ -7,3 +7,5 @@ CC data/model/landuse/CC asc
 OT data/model/landuse/OT asc
 VF data/model/landuse/VF asc
 SR data/model/landuse/SR asc
+ST data/model/landuse/SE asc
+SE data/model/landuse/SE asc
