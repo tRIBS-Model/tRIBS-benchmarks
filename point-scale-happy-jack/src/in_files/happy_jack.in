@@ -1,319 +1,209 @@
-Created by: wr
-On: 2024-03-07 14:13:53
+##############################################################################
+##
+##                    tRIBS Distributed Hydrologic Model
+##
+##              TIN-based Real-time Integrated Basin Simulator
+##                       Ralph M. Parsons Laboratory
+##                  Massachusetts Institute of Technology
+##
+##############################################################################
 
-STARTDATE:
+
+##=========================================================================
+##
+##
+##			Section 1: Model Run Parameters
+##
+##
+##=========================================================================
+
+## Time Variables
+## --------------
+
+STARTDATE: 	Starting time (MM/DD/YYYY/HH/MM)
 06/01/2002/00/00
 
-RUNTIME:
+RUNTIME:     	Run duration (hours) 35072
 143183
 
-RAINSEARCH:
-24
-
-TIMESTEP:
+TIMESTEP:    	Unsaturated zone computational time step (mins)
 3.75
 
-GWSTEP:
+GWSTEP:      	Saturated zone computational time step (mins)
 30.0
 
-METSTEP:
+METSTEP:     	Meteorological data time step (mins)
 60.0
 
-ETISTEP:
+RAININTRVL:  	Time interval in rainfall input (hours)
 1
 
-RAININTRVL:
+OPINTRVL:    	Output interval (hours)   
 1
 
-OPINTRVL:
-1
+SPOPINTRVL:   	Spatial output interval (hours)
+8760
 
-SPOPINTRVL:
-50000
+INTSTORMMAX: 	Interstorm interval (hours)     
+100
 
-INTSTORMMAX:
-10000
+RAINSEARCH:	Rainfall search interval (hours)
+24
 
-BASEFLOW:
+
+## Routing Variables
+## -----------------
+
+BASEFLOW:    	Baseflow discharge (m3/s)  
 0.2
 
-VELOCITYCOEF:
+VELOCITYCOEF: 	Discharge-velocity coefficient 
 1.2
 
-KINEMVELCOEF:
+KINEMVELCOEF:	Kinematic routing velocity coefficient
 3
 
-VELOCITYRATIO:
+VELOCITYRATIO: 	Stream to hillslope velocity coefficient
 60
 
-FLOWEXP:
+FLOWEXP: 	Nonlinear discharge coefficient
 0.3
 
-CHANNELROUGHNESS:
+CHANNELROUGHNESS: Uniform channel roughness value     
 0.15
 
-CHANNELWIDTH:
-
-
-CHANNELWIDTHCOEFF:
-2.33
-
-CHANNELWIDTHEXPNT:
-0.54
-
-CHANNELWIDTHFILE:
-
-
-OPTMESHINPUT:
-8
-
-RAINSOURCE:
-3
-
-OPTEVAPOTRANS:
-1
-
-HILLALBOPT:
-0
-
-OPTRADSHELT:
-0
-
-OPTINTERCEPT:
-2
-
-OPTLANDUSE:
-0
-
-OPTLUINTERP:
-0
-
-GFLUXOPTION:
-2
-
-METDATAOPTION:
-1
-
-CONVERTDATA:
-0
-
-OPTBEDROCK:
-0
-
-WIDTHINTERPOLATION:
-0
-
-OPTGWFILE:
-0
-
-OPTRUNON:
-0
-
-OPTRESERVOIR:
-0
-
-OPTSOILTYPE:
-0
-
-OPTSPATIAL:
-0
-
-OPTGROUNDWATER:
-1
-
-OPTINTERHYDRO:
-0
-
-OPTHEADER:
-1
-
-OPTSNOW:
-1
-
-INPUTDATAFILE:
-
-
-INPUTTIME:
-0
-
-ARCINFOFILENAME:
-
-
-POINTFILENAME:
-data/HappyJack.points
-
-SOILTABLENAME:
-data/HJ_Soil_Table.sdt
-
-SOILMAPNAME:
-data/HJ_Soil_Map.soi
-
-LANDTABLENAME:
-data/HJ_Veg_Table.ldt
-
-LANDMAPNAME:
-data/HJ_Veg_Map.lan
-
-GWATERFILE:
-data/HJ_Water_Table_Map.iwt
-
-DEMFILE:
-data/Sheltering_DEM.dem
-
-RAINFILE:
-data/
-
-RAINEXTENSION:
-txt
-
-DEPTHTOBEDROCK:
-15
-
-BEDROCKFILE:
-data/
-
-LUGRID:
-data/Dynamic_Veg_Grid_Data.gdf
-
-SCGRID:
-None
-
-TLINKE:
-2.5
-
-MINSNTEMP:
--50.0
-
-SNLIQFRAC:
-0.08
-
-TEMPLAPSE:
--0.0065
-
-PRECLAPSE:
-0
-
-HYDROMETSTATIONS:
-data/HJ_WEATHER_2002-2018.sdf
-
-HYDROMETGRID:
-
-
-HYDROMETCONVERT:
-
-
-HYDROMETBASENAME:
-data/HJW_WEATHER_2002-2018.mdf
-
-GAUGESTATIONS:
-data/HJ_PRECIP_2002-2018.sdf
-
-GAUGECONVERT:
-
-
-GAUGEBASENAME:
-data/HJ_PRECIP_2002-2018.mdf
-
-OUTHYDROEXTENSION:
-mrf
-
-RIBSHYDOUTPUT:
-0
-
-NODEOUTPUTLIST:
-data/Nodes/pNodes.dat
-
-HYDRONODELIST:
-data/Nodes/hNodes.dat
-
-OUTLETNODELIST:
-data/Nodes/oNodes.dat
-
-OUTFILENAME:
-results/test/hj_test
-
-OUTHYDROFILENAME:
-results/test/hj_test
-
-FORECASTMODE:
-0
-
-FORECASTTIME:
-0
-
-FORECASTLEADTIME:
-0
-
-FORECASTLENGTH:
-0
-
-FORECASTFILE:
-data/
-
-CLIMATOLOGY:
-0
-
-RAINDISTRIBUTION:
-0
-
-STOCHASTICMODE:
-0
-
-PMEAN:
-0
-
-STDUR:
-0
-
-ISTDUR:
-0
-
-SEED:
-0
-
-PERIOD:
-0
-
-MAXPMEAN:
-0
-
-MAXSTDURMN:
-0
-
-MAXISTDURMN:
-0
-
-WEATHERTABLENAME:
-
-
-RESTARTMODE:
-0
-
-RESTARTINTRVL:
+CHANNELWIDTH:     Uniform channel width  (meters)
 12
 
-RESTARTDIR:
-data/
+CHANNELWIDTHCOEFF:	Coefficient in width-area relationship 
+2.33
 
-RESTARTFILE:
-tRIBS_Rstrt_00012
+CHANNELWIDTHEXPNT:	Exponent in width-area relationship 
+0.54
 
-PARALLELMODE:
+CHANNELWIDTHFILE:	Filename that contains channel widths
+
+
+##=========================================================================
+##
+##
+##			Section 2: Model Run Options
+##
+##
+##  OPTMESHINPUT:	1  tMesh data	
+##                  2  Point Triangulator
+##
+##  RAINSOURCE:		1  Gridded
+##                  2  Rain gauges
+##
+##  OPTEVAPOTRANS:	0  Inactive evapotranspiration
+##			        1  Penman-Monteith method
+##                  2  Pan evaporation measurements
+##
+##  OPTSNOW:		0  Inactive snow layer
+##                  1  Single snow layer
+##
+##  HILLALBOPT:		0  Snow albedo for hillslopes
+##	        		1  Land-cover albedo for hillslopes
+##		        	2  Dynamic albedo for hillslopes
+##
+##  OPTRADSHELT:	0  Local controls on shortwave radiation
+##		        	1  Remote controls on diffuse shortwave 
+##		        	2  Remote controls on entire shortwave
+## 		        	3  No sheltering
+##
+##  OPTINTERCEPT:	0  Inactive interception 
+##		        	1  Canopy water balance method
+##  
+##  OPTLANDUSE:		Specifies the source for land use and vegetation parameters.
+##			        0  ID Map with Lookup Table
+##			        1  Dynamic Gridded Parameters, ID Map & Table for non-gridded parameters
+##			        2  Static Gridded Parameters, ID Map & Table for non-gridded parameters
+##
+##  OPTLUINTERP:  	Specifies how dynamic gridded LU data is applied (OPTLANDUSE 1).
+##                  0  Constant (previous) values between land cover
+##		        	1  Linear interpolation between land cover
+##
+##  GFLUXOPTION:	0  Inactive ground heat flux
+##		        	1  Temperature gradient method
+##                  2  Force_Restore method
+##
+##  METDATAOPTION:	0  Inactive meteorological data
+##			        1  Weather station point data
+##			        2  Gridded meteorological data
+##
+##  OPTBEDROCK:		0  Uniform bedrock depth (double)
+##			        1  Variable bedrock depth (grid)
+##
+##  WIDTHINTERPOLATION: 0  Interpolate between measured and observed
+##	                    1  Interpolate only between measured
+##
+##  OPTGWFILE:		0  Resample ASCII grid file in GWATERFILE
+##		         	1  Read in Voronoi polygon file with GW levels
+##
+##  OPTRUNON:		0  No Runon
+##			        1  Runon 
+##
+##=========================================================================
+
+OPTMESHINPUT:   Mesh input data option
+2
+
+RAINSOURCE:  	Rainfall data source option 
+2
+
+OPTEVAPOTRANS: 	Option for evapoTranspiration scheme
+1
+
+OPTSNOW:	Option for single layer snow model
+1
+
+HILLALBOPT: 	Option for albedo of surrounding hillslopes
 0
 
-GRAPHOPTION:
+OPTRADSHELT:	Option for local and remote radiation sheltering
 0
 
-GRAPHFILE:
+OPTINTERCEPT: 	Option for interception scheme
+1
 
-
-OPTVIZ:
+OPTLANDUSE:	Option for static or dynamic land cover
 0
 
-OUTVIZFILENAME:
+OPTLUINTERP:	Option for interpolation of land cover 
+0
 
+GFLUXOPTION: 	Option for ground heat flux
+2
 
-OPTPERCOLATION:
+METDATAOPTION:  Option for meteorological data
+1
+
+OPTBEDROCK:	Option for uniform or variable depth
+0
+
+WIDTHINTERPOLATION:  Option for interpolating width values
+0
+
+OPTGWFILE: 	Option for groundwater initial file
+0
+
+OPTGROUNDWATER:  Option for groundwater model 
+1
+
+OPTSPATIAL:  Option for writing spatial outputs
+1
+
+OPTRUNON:	Option for runon in overland flow paths
+0
+
+OPTRESERVOIR:  Option for reservoir module
+0
+
+OPTSOILTYPE:  Option for table or gridded soils
+0
+
+OPTPERCOLATION:  Option for streamflow infiltration
 0
 
 CHANNELCONDUCTIVITY:
@@ -334,3 +224,176 @@ CHANPOREINDEX:
 CHANPSIB:
 0
 
+##=========================================================================
+##
+##
+##			Section 3: Model Input Files and Pathnames
+##
+##
+##=========================================================================
+
+## Mesh Generation
+## -----------------
+
+INPUTDATAFILE:    tMesh input file base name for Mesh Files
+None
+
+POINTFILENAME:    tMesh input file name Points files
+data/HappyJack.points
+
+
+## Resampling Grids
+## -----------------
+
+SOILTABLENAME:    Soil parameter reference table (*.sdt)
+data/HJ_Soil_Table.sdt
+
+SOILMAPNAME:      Soil texture ASCII grid (*.soi)
+data/HJ_Soil_Map.soi
+
+LANDTABLENAME:    Land use parameter reference table (*.ldt)
+data/HJ_Veg_Table.ldt
+
+LANDMAPNAME:  	  Land use ASCII grid (*.lan)
+data/HJ_Veg_Map.lan
+
+GWATERFILE:       Ground water ASCII grid (*.iwt)
+data/HJ_Water_Table_Map.iwt
+
+DEMFILE:	  DEM ASCII grid for sky and land view factors (*.dem)
+data/Sheltering_DEM.dem
+
+RAINFILE:         Base name of the radar ASCII grid
+None
+
+RAINEXTENSION:    Extension for the radar ASCII grid
+None
+
+DEPTHTOBEDROCK:   Uniform depth to bedrock (meters)
+15
+
+BEDROCKFILE:      Bedrock depth ASCII grid (*.brd)
+data/model/depth_to_bedrock.brd
+
+LUGRID:		  Land cover grid data file (*.gdf)
+data/Dynamic_Veg_Grid_Data.gdf
+
+SCGRID:		  Soil cover grid data file (*.gdf)
+None
+
+
+## Meteorological Variables
+## ------------------
+
+UTCOFFSET:		  Offset from UTC for solar position calculations (hours)
+-7
+
+CENTROIDLAT:	  Watershed centroid latitude for solar position calculations (decimal degrees)
+34.75
+
+CENTROIDLONG:	  Watershed centroid longitude for solar position calculations (decimal degrees)
+111.42
+
+TLINKE:		  Atmospheric turbidity parameter
+2.5
+
+TEMPLAPSE:	  Temperature lapse rate
+-0.0065
+
+PRECLAPSE:	  Precipitation lapse rate
+0
+
+
+## Meterological Data
+## ------------------
+
+HYDROMETSTATIONS:  Hydrometeorological station file (*.sdf)
+data/HJ_WEATHER_2002-2018.sdf
+
+HYDROMETGRID:  	   Hydrometeorological ASCII grid (*.gdf)
+
+
+GAUGESTATIONS: 	   Rain Gauge station file (*.sdf)
+data/HJ_PRECIP_2002-2018.sdf
+
+RAINDISTRIBUTION:  Distributed or MAP radar rainfall	
+0
+
+
+## Output Data
+## -----------
+
+OUTFILENAME:	   Base name of the tMesh and variable output
+results/test/hj_test
+
+OUTHYDROFILENAME:  Base name for hydrograph output
+results/test/hj_test
+
+NODEOUTPUTLIST:    Filename with Nodes for Dynamic Output (*.nol)
+data/Nodes/pNodes.dat
+
+HYDRONODELIST:     Filename with Nodes for HydroModel Output (*.nol)
+data/Nodes/hNodes.dat
+
+OUTLETNODELIST:    Filename with Interior Nodes for  Output (*.nol)
+data/Nodes/oNodes.dat
+
+##=========================================================================
+##
+##
+## 			Section 5: Restart Mode Options
+##
+##
+##  RESTARTMODE:        0  No reading or writing of restart (for fast development)
+##                      1  Write files only (for initial runs)
+##                      2  Read file only (to start at some specified time)
+##                      3  Read a restart file and continue to write 
+##                         restart files
+##
+##=========================================================================
+
+RESTARTMODE:	    Restart Mode Option
+0
+
+RESTARTINTRVL:      Time set for restart output (hours)
+None
+
+RESTARTDIR:         Path of directory for restart output
+None
+
+RESTARTFILE:        Actual file to restart a Run
+None
+
+##=========================================================================
+##
+##
+##                      Section 6: Parallel Mode Options
+##
+##
+##  PARALLELMODE:       0  Run in serial mode
+##                      1  Run in parallel mode
+##
+##  GRAPHOPTION:    	0  Default partitioning of the graph
+##                      1  Reach-based partitioning
+##                      2  Inlet/outlet-based partitioning
+##
+##  GRAPHFILE:	  	Reach connectivity file (parallel only)
+##
+##=========================================================================
+
+PARALLELMODE:       Parallel or Serial Mode Option
+0
+ 
+GRAPHOPTION:        Graph File Type Option
+0
+
+GRAPHFILE:          Reach connectivity filename (graph file option 1,2)
+None
+
+##=========================================================================
+##
+##
+##			End 
+##
+##
+##=========================================================================
