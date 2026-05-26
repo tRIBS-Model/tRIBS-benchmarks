@@ -35,9 +35,6 @@ GWSTEP:      	Saturated zone computational time step (mins)
 METSTEP:     	Meteorological data time step (mins)
 60.0
 
-ETISTEP:	ET, interception and snow time step (hours)
-1
-
 RAININTRVL:  	Time interval in rainfall input (hours)
 1
 
@@ -171,7 +168,7 @@ OPTINTERCEPT: 	Option for interception scheme
 1
 
 OPTLANDUSE:	Option for static or dynamic land cover
-0
+2
 
 OPTLUINTERP:	Option for interpolation of land cover 
 0
@@ -288,6 +285,15 @@ None
 ## Meteorological Variables
 ## ------------------
 
+UTCOFFSET:		  Offset from UTC for solar position calculations (hours)
+-7
+
+CENTROIDLAT:	  Watershed centroid latitude for solar position calculations (decimal degrees)
+35.1432
+
+CENTROIDLONG:	  Watershed centroid longitude for solar position calculations (decimal degrees)
+-112.14739
+
 TLINKE:		  Atmospheric turbidity parameter
 2.5
 
@@ -298,6 +304,9 @@ TEMPLAPSE:	  Temperature lapse rate
 -0.0065
 
 PRECLAPSE:	  Precipitation lapse rate
+0
+
+RAINDISTRIBUTION:  Distributed or MAP radar rainfall	
 0
 
 
@@ -320,9 +329,6 @@ data/model/precip/precip_meta.sdf
 OUTFILENAME:	   Base name of the tMesh and variable output
 results/test/serial/bigsp
 
-OUTHYDROFILENAME:  Base name for hydrograph output
-results/test/serial/bigsp
-
 NODEOUTPUTLIST:    Filename with Nodes for Dynamic Output (*.nol)
 None
 
@@ -331,47 +337,6 @@ None
 
 OUTLETNODELIST:    Filename with Interior Nodes for  Output (*.nol)
 None
-
-##=========================================================================
-##
-##
-##			Section 4: Model Modes
-##
-##
-##  FORECASTMODE:	0  No Forecasting		
-##		        	1  Single or Updating QPF Forecast
-##			        2  Persistence Forecast
-## 	                3  Climatological Forecast
-##
-##  RAINDISTRIBUTION:	0  Spatially-distributed Radar
-##			            1  Mean Areal Precipitation Radar
-##                      
-##=========================================================================
-
-
-## Rainfall Forecasting
-## --------------------
-
-FORECASTMODE:	   Rainfall Forecasting Mode Option
-0
-
-FORECASTTIME:	   Forecast Time (hours from start)
-0
-
-FORECASTLEADTIME:  Forecast Lead Time (hours) 
-0
-
-FORECASTLENGTH:	   Forecast Window Length (hours)
-0
-
-FORECASTFILE:	   Base name of the radar QPF grids
-None
-
-CLIMATOLOGY:	   Rainfall climatology (mm/hr)
-0
-
-RAINDISTRIBUTION:  Distributed or MAP radar rainfall	
-0
 
 ##=========================================================================
 ##
@@ -417,13 +382,13 @@ None
 ##=========================================================================
 
 PARALLELMODE:       Parallel or Serial Mode Option
-0
+1
  
 GRAPHOPTION:        Graph File Type Option
-0
+3
 
 GRAPHFILE:          Reach connectivity filename (graph file option 1,2)
-None
+bigsp_upnconn_3nodes.reach
 
 ##=========================================================================
 ##

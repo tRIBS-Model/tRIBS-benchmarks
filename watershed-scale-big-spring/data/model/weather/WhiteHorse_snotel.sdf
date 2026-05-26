@@ -1,2 +1,2 @@
-1 10
-1 data/model/weather/WhiteHorse_snotel.mdf 35.1432 395479.113111 -112.14739 3889526.15269 -7 35073 12 2188.460693
+ID,DataFile,Northing,Easting,Elevation
+1,data/model/weather/WhiteHorse_snotel.mdf,395479.113111,3889526.15269,2188.5

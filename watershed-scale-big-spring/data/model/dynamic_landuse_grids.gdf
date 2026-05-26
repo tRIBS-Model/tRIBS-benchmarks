@@ -1,11 +1,10 @@
-9
-35.11 112.65 -7
-VH data/model/landuse/VH asc
-LA data/model/landuse/LA asc
-TF data/model/landuse/TF asc
-CC data/model/landuse/CC asc
-OT data/model/landuse/OT asc
-VF data/model/landuse/VF asc
-SR data/model/landuse/SR asc
-ST data/model/landuse/SE asc
-SE data/model/landuse/SE asc
+Variable,BasePath,FileExtension
+VH,data/model/landuse/VH,asc
+LA,data/model/landuse/LA,asc
+TF,data/model/landuse/TF,asc
+CC,data/model/landuse/CC,asc
+OT,data/model/landuse/OT,asc
+VF,data/model/landuse/VF,asc
+SR,data/model/landuse/SR,asc
+ST,data/model/landuse/SE,asc
+SE,data/model/landuse/SE,asc
