@@ -24,7 +24,7 @@ STARTDATE: 	Starting time (MM/DD/YYYY/HH/MM)
 01/01/2016/00/00
 
 RUNTIME:     	Run duration (hours) 35072
-50
+35072
 
 TIMESTEP:    	Unsaturated zone computational time step (mins)
 3.75
@@ -281,6 +281,9 @@ data/model/dynamic_landuse_grids.gdf
 SCGRID:		  Soil cover grid data file (*.gdf)
 None
 
+RSPARAMFILE: Monthly stomatal resistance scaling factor fata file (*.dat)
+data/model/rsmonthlyscale.dat
+
 
 ## Meteorological Variables
 ## ------------------
@@ -330,7 +333,7 @@ OUTFILENAME:	   Base name of the tMesh and variable output
 results/test/serial/bigsp
 
 NODEOUTPUTLIST:    Filename with Nodes for Dynamic Output (*.nol)
-None
+data/model/pNodes.dat
 
 HYDRONODELIST:     Filename with Nodes for HydroModel Output (*.nol)
 None
@@ -382,13 +385,13 @@ None
 ##=========================================================================
 
 PARALLELMODE:       Parallel or Serial Mode Option
-1
+0
  
 GRAPHOPTION:        Graph File Type Option
-3
+
 
 GRAPHFILE:          Reach connectivity filename (graph file option 1,2)
-bigsp_upnconn_3nodes.reach
+None
 
 ##=========================================================================
 ##
