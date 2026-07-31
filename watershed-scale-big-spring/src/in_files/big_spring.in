@@ -401,20 +401,30 @@ None
 ##
 ##  PARALLELMODE:   0  Run in serial mode
 ##                  1  Run in parallel mode
+##                  2  Generate partition only with summary statistics
 ##
-##  GRAPHOPTION:    0  Default partitioning of the graph
-##                  1  Reach-based partitioning
-##                  2  Inlet/outlet-based partitioning
+##  GRAPHOPTION:    Reach-graph partitioning method (used to generate the
+##                  partition when no GRAPHFILE exists yet):
+##                  0  SurfaceFlow (SF): flow edges only
+##                  1  Surface-Subsurface Flow (SSF): flow + subsurface flux
+##                  2  Surface-Subsurface Flow w/ Headwaters (SSF-H):
+##                     SSF plus balancing of headwater reaches
+##
+##  GRAPHFILE:      Path to the reach graph file. If the file exists it is
+##                  read; if it does not, tRIBS generates the partition
+##                  in-process with METIS (using GRAPHOPTION above) and
+##                  writes for reuse. The partition is always sized
+##                  to the number of MPI processes.
 ##
 ##=========================================================================
 
-PARALLELMODE:             Parallel or Serial Mode Option
+PARALLELMODE:             Serial Mode, Parallel, or Partitioning Mode Option
 0
 
-GRAPHOPTION:              Graph File Type Option
+GRAPHOPTION:              Reach partitioning method
+0
 
-
-GRAPHFILE:                Reach connectivity filename (graph file option 1,2)
+GRAPHFILE:                Reach connectivity filename
 None
 
 ##=========================================================================
