@@ -7,3 +7,4 @@ point-scale-happy-jack/results/test/*
 !watershed-scale-big-spring/results/test/serial/.gitkeep
 !watershed-scale-big-spring/results/test/parallel/.gitkeep
 point-scale-happy-jack/data/Test_Datasets/*
+.vscode/*
