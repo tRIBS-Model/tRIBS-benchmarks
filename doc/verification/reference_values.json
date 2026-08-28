@@ -1,57 +1,57 @@
 {
-    "tRIBS_version": "5.3.0",
+    "tRIBS_version": "6.0.0",
     "file_format_version": "1.1",
-    "generated_on_utc": "2025-09-09T20:25:21.510543+00:00",
+    "generated_on_utc": "2026-08-28T18:10:38.420519+00:00",
     "benchmarks": {
         "point-scale-happy-jack": {
             "description": "Point-scale simulation at the Happy Jack site.",
             "values": {
-                "dSat": -11.081444400000237,
-                "dUnsat": 45.12258890537532,
+                "dSat": 370.1868000000004,
+                "dUnsat": -170.63055280000003,
                 "dCanopySWE": 0.0,
                 "dSWE": 0.0,
                 "dCanopy": 0.0,
                 "nP": 11603.01,
-                "nET": 2446.134171,
-                "nQsurf": 9021.87166791058,
-                "nQunsat": 81.777861,
+                "nET": 10479.261999999999,
+                "nQsurf": 109.34011620019609,
+                "nQunsat": 44.931,
                 "nQsat": 0.0,
-                "dS": 34.04114450537509,
-                "nQ": 19.185155584044452
+                "dS": 199.55624720000037,
+                "nQ": 154.2711162001961
             }
         },
         "watershed-scale-serial": {
             "description": "Watershed-scale simulation for Big Spring basin in serial mode.",
             "values": {
-                "dSat": -1039.6757638573154,
-                "dUnsat": 604.3714037410678,
-                "dCanopySWE": 1.7944399999999998,
-                "dSWE": 76.29523,
+                "dSat": -795.5530528773535,
+                "dUnsat": 461.90072045613135,
+                "dCanopySWE": 0.0,
+                "dSWE": 23.35,
                 "dCanopy": 0.0,
-                "nP": 2685.388814,
-                "nET": 3054.8408849999996,
-                "nQsurf": 24.933493622716362,
+                "nP": 2380.566,
+                "nET": 2631.803,
+                "nQsurf": 55.72690469613272,
                 "nQunsat": 0.0,
                 "nQsat": 0.0,
-                "dS": -357.2146901162476,
-                "nQ": -37.17087450646847
+                "dS": -310.3023324212221,
+                "nQ": 55.72690469613272
             }
         },
         "watershed-scale-parallel": {
             "description": "Watershed-scale simulation for Big Spring basin in parallel mode.",
             "values": {
-                "dSat": -1039.6757638573154,
-                "dUnsat": 604.3714037410678,
-                "dCanopySWE": 1.7944399999999998,
-                "dSWE": 76.29523,
+                "dSat": -795.547909362504,
+                "dUnsat": 461.89760348613254,
+                "dCanopySWE": 0.0,
+                "dSWE": 23.35,
                 "dCanopy": 0.0,
-                "nP": 2685.388814,
-                "nET": 3054.8408849999996,
-                "nQsurf": 24.933493622716362,
+                "nP": 2380.566,
+                "nET": 2631.634,
+                "nQsurf": 55.86554133235826,
                 "nQunsat": 0.0,
                 "nQsat": 0.0,
-                "dS": -357.2146901162476,
-                "nQ": -37.17087450646847
+                "dS": -310.30030587637145,
+                "nQ": 55.86554133235826
             }
         }
     }

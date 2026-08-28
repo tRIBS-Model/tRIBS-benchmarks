@@ -10,7 +10,7 @@ from pytRIBS.classes import Results
 # =============================================================================
 # SCRIPT CONFIGURATION
 # =============================================================================
-TRIBS_VERSION = "5.3.0"
+TRIBS_VERSION = "6.0.0"
 REFERENCE_FILE_OUTPUT = Path("doc/verification/reference_values.json")
 
 # Define the root directories for each benchmark case
