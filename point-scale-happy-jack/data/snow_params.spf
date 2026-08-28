@@ -1,0 +1,53 @@
+## General Snow Parameters
+## -----------------
+
+IRREDUCIBLE_SAT: Irreducible water saturation (Volumetric fraction of Pore Space)
+0.01
+
+K_SAT_REF: Saturated hydraulic conductivity of snowpack (m/s)
+0.0001
+
+MIN_SNOW_TEMP: Minimum temperature of snow (Celsius)
+-27
+
+FRESH_SNOW_DENSITY: Fresh snow density baseline (kg/m^3)
+60
+
+CANOPY_WIND_ATTENUATION: Coefficient of exponential wind attenuation by canopy (Dimensionless)
+0.4
+
+ROUGHNESS_LENGTH: Aerodynamic roughness length (z0) of the snow surface (m)
+0.04
+
+## Albedo Parameters
+## -----------------
+
+ALBEDO_FRESH: Fresh snow albedo
+0.85
+
+ALBEDO_DECAY_DRY: Exponential decay rate of albedo for dry snow
+0.96
+
+ALBEDO_DECAY_WET: Exponential decay rate of albedo for wet snow
+0.82
+
+ALBEDO_MIN: Minimum snow albedo which snow cannot decay below
+0.2
+
+ALBEDO_RESET_THRESHOLD: Minimum snowfall depth required to reset the age of snow surface (mm)
+0.5
+
+## Precipitation Phase Partitioning Parameters
+## -----------------
+
+OPTPRECPARTITION: Option for precipitation partitioning scheme (0 - Wet-bulb Temperature, 2 - Linear Transition)
+0
+
+MAX_WETBULB_TEMP: Upper wet-bulb temperature limit at which snowfall can occur for OPTPRECPARTITION 0 (Celsius)
+5
+
+MIN_TEMP_RAIN: Minimum air temperature at which liquid precipitation can occur for OPTPRECPARTITION 1 (Celsius)
+0
+
+MAX_TEMP_SNOW: Maximum air temperature at which snowfall can occur for OPTPRECPARTITION 1 (Celsius)
+4

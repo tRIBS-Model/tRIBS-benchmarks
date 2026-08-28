@@ -1,3 +1,3 @@
-2 7
-1 data/model/precip/precip_U.mdf 3891469.290931 400109.778323 64248 5 2188.460693
-2 data/model/precip/precip_L.mdf 3890865.658039 402061.660015 64248 5 2188.460693
+ID,DataFile,Northing,Easting,Elevation
+1,data/model/precip/precip_U.mdf,3891469.290931,400109.778323,2188.5
+2,data/model/precip/precip_L.mdf,3890865.658039,402061.660015,2188.5

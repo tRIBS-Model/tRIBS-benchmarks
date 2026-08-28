@@ -1,336 +1,436 @@
-Created by: lraming
-On: 2024-03-20 10:41:07
+##############################################################################
+##
+##                    tRIBS Distributed Hydrologic Model
+##
+##              TIN-based Real-time Integrated Basin Simulator
+##                       Ralph M. Parsons Laboratory
+##                  Massachusetts Institute of Technology
+##
+##############################################################################
 
-STARTDATE:
+##=========================================================================
+##
+##
+##			Section 1: Model Run Parameters
+##
+##
+##=========================================================================
+
+## Time Variables
+## --------------
+
+STARTDATE:                Starting time (MM/DD/YYYY/HH/MM)
 01/01/2016/00/00
 
-RUNTIME:
-35072 
+RUNTIME:                  Simulation length in hours
+35072
 
-RAINSEARCH:
-24
-
-TIMESTEP:
+TIMESTEP:                 Unsaturated zone computational time step (mins)
 3.75
 
-GWSTEP:
+GWSTEP:                   Saturated zone computational time step (mins)
 30.0
 
-METSTEP:
+METSTEP:                  Meteorological data time step (mins)
 60.0
 
-ETISTEP:
+RAININTRVL:               Time interval in rainfall input (hours)
 1
 
-RAININTRVL:
+OPINTRVL:                 Output interval (hours)
 1
 
-OPINTRVL:
-1
-
-SPOPINTRVL:
+SPOPINTRVL:               Spatial output interval (hours)
 8760
 
-INTSTORMMAX:
-1000
+INTSTORMMAX:              Interstorm interval (hours)
+100
 
-BASEFLOW:
-0.01
+RAINSEARCH:               Rainfall search interval (hours)
+24
 
-VELOCITYCOEF:
-0.6
+## Routing Variables
+## -----------------
 
-KINEMVELCOEF:
-25
+BASEFLOW:                 Baseflow discharge (m3/s)
+0.2
 
-VELOCITYRATIO:
-70
-
-FLOWEXP:
-0.4
-
-CHANNELROUGHNESS:
-0.3
-
-CHANNELWIDTH:
-None
-
-CHANNELWIDTHCOEFF:
-2.33
-
-CHANNELWIDTHEXPNT:
-0.54
-
-CHANNELWIDTHFILE:
-None
-
-OPTMESHINPUT:
-8
-
-RAINSOURCE:
+KINEMVELCOEF:             Kinematic routing velocity coefficient
 3
 
-OPTEVAPOTRANS:
-1
+FLOWEXP:                  Nonlinear discharge coefficient
+0.3
 
-HILLALBOPT:
-2
+CHANNELROUGHNESS:         Uniform channel roughness value
+0.03
 
-OPTRADSHELT:
-2
+CHANNELWIDTH:             Uniform channel width  (meters)
+12
 
-OPTINTERCEPT:
-2
+CHANNELWIDTHCOEFF:        Coefficient in width-area relationship
+2.33
 
-OPTLANDUSE:
-1
+CHANNELWIDTHEXPNT:        Exponent in width-area relationship
+0.54
 
-OPTLUINTERP:
-0
-
-GFLUXOPTION:
-2
-
-METDATAOPTION:
-1
-
-CONVERTDATA:
-0
-
-OPTBEDROCK:
-1
-
-WIDTHINTERPOLATION:
-0
-
-OPTGWFILE:
-0
-
-OPTRUNON:
-0
-
-OPTRESERVOIR:
-0
-
-OPTSOILTYPE:
-0
-
-OPTSPATIAL:
-1
-
-OPTGROUNDWATER:
-1
-
-OPTINTERHYDRO:
-0
-
-OPTHEADER:
-1
-
-OPTSNOW:
-1
-
-INPUTDATAFILE:
-results/one/bigsp
-
-INPUTTIME:
+CHANNELWIDTHFILE:         Filename that contains channel widths
 None
 
-ARCINFOFILENAME:
-None
 
-POINTFILENAME:
+##=========================================================================
+##
+##
+##			Section 2: Model Run Options
+##
+##
+##  OPTMESHINPUT:         1  tMesh data
+##                        2  Point Triangulator
+##
+##  RAINSOURCE:           1  Gridded Rainfall
+##                        2  Rain gauges
+##
+##  OPTEVAPOTRANS:        0  Inactive evapotranspiration
+##                        1  Penman-Monteith method
+##                        2  Pan evaporation measurements
+##
+##  OPTSNOW:              0  Inactive snow module
+##                        1  Single layer snow module
+##
+##  HILLALBOPT:           0  Snow albedo for hillslopes
+##                        1  Land-cover albedo for hillslopes
+##                        2  Dynamic albedo for hillslopes
+##
+##  OPTRADSHELT:          0  Local controls on shortwave radiation
+##                        1  Remote controls on diffuse shortwave
+##                        2  Remote controls on entire shortwave
+##                        3  No sheltering
+##
+##  OPTINTERCEPT:         0  Inactive interception
+##                        1  Canopy water balance method
+##
+##  OPTLANDUSE:           0  ID Map with Lookup Table (LANDTABLENAME, LANDMAPNAME)
+##                        1  Dynamic updating of gridded parameter maps, ID Map & Table for non-gridded parameters (LUGRID)
+##                        2  Static gridded parameter maps, ID Map & Table for non-gridded parameters (LUGRID)
+##
+##  OPTLUINTERP:          0  Constant (previous) values between land cover
+##                        1  Linear interpolation between land cover
+##
+##  GFLUXOPTION:          0  Inactive ground heat flux
+##                        1  Temperature gradient method
+##                        2  Force-Restore method
+##
+##  METDATAOPTION:        0  Inactive meteorological data
+##                        1  Weather station point data
+##                        2  Gridded meteorological data
+##
+##  OPTBEDROCK:           0  Uniform bedrock depth (DEPTHTOBEDROCK)
+##                        1  Spatial grid of bedrock depth (BEDROCKFILE)
+##
+##  WIDTHINTERPOLATION:   0  Interpolate between measured and observed
+##                        1  Interpolate only between measured
+##
+##  OPTGWFILE:            0  Resample ASCII grid file in GWATERFILE
+##                        1  Read in Voronoi polygon file with GW levels
+##
+##  OPTGROUNDWATER:       0  Inactive groundwater module
+##                        1  Active groundwater module
+##
+##  OPTSPATIAL:           0  Inactive spatial outputs
+##                        1  Active spatial outputs at interval SPOPINTRVL
+##
+##  OPTRUNON:             0  Inactive runon module
+##                        1  Active runon module [IN DEVELOPMENT]
+##
+##  OPTRESERVOIR:         0  Inactive reservoir routing module
+##                        1  Active level pool reservoir routing module
+##
+##  OPTSOILTYPE:          0  ID Map with Lookup Table (SOILTABLENAME, SOILMAPNAME)
+##                        1  Static gridded parameter maps, ID Map & Table for non-gridded parameters (SCGRID)
+##
+##  OPTPERCOLATION:       0  Inactive channel transmission losses
+##                        1  Constant loss method
+##                        2  Transient loss method
+##                        3  Green-Ampt loss method [IN DEVELOPMENT]
+##
+##=========================================================================
+
+OPTMESHINPUT:             Mesh input data option
+2
+
+RAINSOURCE:               Rainfall data source option
+2
+
+OPTEVAPOTRANS:            Option for evapoTranspiration scheme
+1
+
+OPTSNOW:                  Option for snow module
+1
+
+HILLALBOPT:               Option for albedo of surrounding hillslopes
+1
+
+OPTRADSHELT:              Option for local and remote radiation sheltering
+2
+
+OPTINTERCEPT:             Option for interception scheme
+1
+
+OPTLANDUSE:               Option for static or dynamic land cover
+2
+
+OPTLUINTERP:              Option for interpolation of land cover
+0
+
+GFLUXOPTION:              Option for ground heat flux
+2
+
+METDATAOPTION:            Option for meteorological data
+1
+
+OPTBEDROCK:               Option for uniform or variable depth
+1
+
+WIDTHINTERPOLATION:       Option for interpolating width values
+0
+
+OPTGWFILE:                Option for groundwater initial file
+0
+
+OPTGROUNDWATER:           Option for groundwater module
+1
+
+OPTSPATIAL:               Option for writing spatial outputs
+1
+
+OPTRUNON:                 Option for runon in overland flow paths
+0
+
+OPTRESERVOIR:             Option for level pool reservoir routing
+0
+
+OPTSOILTYPE:              Option for soil input type
+0
+
+OPTPERCOLATION:           Option for percolation losses from channels
+0
+
+
+##=========================================================================
+##
+##
+##			Section 3: Model Input Files and Pathnames
+##
+##
+##=========================================================================
+
+## Mesh Generation
+## ---------------
+
+INPUTDATAFILE:            tMesh input file base name for Mesh files, see OPTMESHINPUT
+
+
+POINTFILENAME:            tMesh input file name Points files, see OPTMESHINPUT
 data/model/points.points
 
-SOILTABLENAME:
+## Resampling Grids
+## ----------------
+
+SOILTABLENAME:            Soil parameter reference table (*.sdt), see OPTSOILTYPE
 data/model/soil_classes.sdt
 
-SOILMAPNAME:
+SOILMAPNAME:              Soil texture ASCII grid (*.soi), see OPTSOILTYPE
 data/model/soil_class_grid.asc
 
-LANDTABLENAME:
+LANDTABLENAME:            Land use parameter reference table, see OPTLANDUSE
 data/model/landuse_classes.ldt
 
-LANDMAPNAME:
+LANDMAPNAME:              Land use ASCII grid (*.lan), see OPTLANDUSE
 data/model/landuse_class_grid.asc
 
-GWATERFILE:
+GWATERFILE:               Ground water ASCII grid (*iwt), see OPTGWFILE
 data/model/water_table.iwt
 
-DEMFILE:
+DEMFILE:                  DEM ASCII grid for sky and land view factors (*.dem), see OPTRADSHELT
 data/model/dem.asc
 
-RAINFILE:
+RAINFILE:                 Base name of the radar ASCII grid, see RAINSOURCE
 None
 
-RAINEXTENSION:
+RAINEXTENSION:            Extension for the radar ASCII grid, see RAINSOURCE
 None
 
-DEPTHTOBEDROCK:
-15
+RAINDISTRIBUTION:         Precipitation distributed as provided or mean areal precipitation, see RAINSOURCE
+0
 
-BEDROCKFILE:
+DEPTHTOBEDROCK:           Uniform depth to bedrock (meters), see OPTBEDROCK
+
+
+BEDROCKFILE:              Bedrock depth ASCII grid (*.brd), see OPTBEDROCK
 data/model/depth_to_bedrock.brd
 
-LUGRID:
+LUGRID:                   Land cover grid data file (*.gdf), see OPTLANDUSE
 data/model/dynamic_landuse_grids.gdf
 
-SCGRID:
+SCGRID:                   Soil cover grid data file (*.gdf), see OPTSOILTYPE
 None
 
-TLINKE:
-2.0
+RSPARAMFILE: Monthly stomatal resistance scaling factor fata file (*.dat)
+data/model/rsmonthlyscale.dat
 
-MINSNTEMP:
--27.0
+## Meteorological Variables
+## ------------------------
 
-SNLIQFRAC:
-0.065
+TLINKE:                   Atmospheric turbidity parameter
+2.5
 
-TEMPLAPSE:
+TEMPLAPSE:                Temperature lapse rate
 -0.0065
 
-PRECLAPSE:
+PRECLAPSE:                Precipitation lapse rate
 0
 
-HYDROMETSTATIONS:
+UTCOFFSET:                UTC (GMT) offset of the watershed centroid, used for solar position calculations (hours)
+-7
+
+CENTROIDLAT:              Latitude of the watershed centroid, used for solar position calculations (decimal degrees)
+35.1432
+
+CENTROIDLONG:             Longitude of the watershed centroid, used for solar position calculations (decimal degrees)
+-112.14739
+
+## Meteorological Data
+## -------------------
+
+HYDROMETSTATIONS:         Hydrometeorological station file (*.sdf), see METDATAOPTION
 data/model/weather/WhiteHorse_snotel.sdf
 
-HYDROMETGRID:
+HYDROMETGRID:             Hydrometeorological grid data file (*.gdf), see METDATAOPTION
 
 
-HYDROMETCONVERT:
-
-
-HYDROMETBASENAME:
-
-
-GAUGESTATIONS:
+GAUGESTATIONS:            Rain Gauge station file (*.sdf), see RAINSOURCE
 data/model/precip/precip_meta.sdf
 
-GAUGECONVERT:
+## Output Data
+## -----------
 
-
-GAUGEBASENAME:
-
-
-OUTHYDROEXTENSION:
-mrf
-
-RIBSHYDOUTPUT:
-0
-
-NODEOUTPUTLIST:
-None
-
-HYDRONODELIST:
-
-
-OUTLETNODELIST:
-
-
-OUTFILENAME:
+OUTFILENAME:              Filepath and base name of model outputs
 results/test/parallel/bigsp
 
-OUTHYDROFILENAME:
-results/test/parallel/bigsp
+NODEOUTPUTLIST:           Filename with Nodes for Dynamic Output (*.nol)
+data/model/pNodes.dat
 
-FORECASTMODE:
-0
-
-FORECASTTIME:
-0
-
-FORECASTLEADTIME:
-0
-
-FORECASTLENGTH:
-0
-
-FORECASTFILE:
-
-
-CLIMATOLOGY:
-0
-
-RAINDISTRIBUTION:
-0
-
-STOCHASTICMODE:
-0
-
-PMEAN:
-0
-
-STDUR:
-0
-
-ISTDUR:
-0
-
-SEED:
-0
-
-PERIOD:
-0
-
-MAXPMEAN:
-0
-
-MAXSTDURMN:
-0
-
-MAXISTDURMN:
-0
-
-WEATHERTABLENAME:
+HYDRONODELIST:            Filename with Nodes for HydroModel Output (*.nol)
 None
 
-RESTARTMODE:
+OUTLETNODELIST:           Filename with Interior Nodes for  Output (*.nol)
+None
+
+## Module Input Files
+## ------------------
+
+RESPOLYGONID:             Path to file of node IDs representing reservoirs, see OPTRESERVOIR
+
+
+RESDATA:                  Path to file of elevation-discharge-storage information for each type of reservoir, see OPTRESERVOIR
+
+
+SNOWFILENAME:             Snow parameter reference file (*.spf), see OPTSNOW
+data/model/snow_params.spf
+
+
+##=========================================================================
+##
+##
+##			Section 4: Model Modes
+##
+##
+##=========================================================================
+
+## Channel Transmission Losses
+## ---------------------------
+
+CHANNELCONDUCTIVITY:      Conductivity in channel for all methods (mm/hr)
 0
 
-RESTARTINTRVL:
+TRANSIENTCONDUCTIVITY:    Conductivity in channel during transient period in (mm/hr)
+0
+
+TRANSIENTTIME:            Time until transient period ends (hours)
+0
+
+CHANNELPOROSITY:          Porosity in channel
+0
+
+CHANPOREINDEX:            Channel pore index in channel
+0
+
+CHANPSIB:                 Matric potential in channel
+0
+
+
+##=========================================================================
+##
+##
+##			Section 5: Restart Mode Options
+##
+##
+##  RESTARTMODE:   0  No reading or writing of restart
+##                 1  Write files (only for initial runs)
+##                 2  Read file only (to start at some specified time)
+##                 3  Read a restart file and continue to write
+##
+##=========================================================================
+
+RESTARTMODE:              Restart Mode Option
+0
+
+RESTARTINTRVL:            Time set for restart output (hours)
 None
 
-RESTARTDIR:
+RESTARTDIR:               Path of directory for restart output
 None
 
-RESTARTFILE:
+RESTARTFILE:              Actual file to restart a run
 None
 
-PARALLELMODE:
+##=========================================================================
+##
+##
+##			Section 6: Parallel Mode Options
+##
+##
+##  PARALLELMODE:   0  Run in serial mode
+##                  1  Run in parallel mode
+##                  2  Generate partition only with summary statistics
+##
+##  GRAPHOPTION:    Reach-graph partitioning method (used to generate the
+##                  partition when no GRAPHFILE exists yet):
+##                  0  SurfaceFlow (SF): flow edges only
+##                  1  Surface-Subsurface Flow (SSF): flow + subsurface flux
+##                  2  Surface-Subsurface Flow w/ Headwaters (SSF-H):
+##                     SSF plus balancing of headwater reaches
+##
+##  GRAPHFILE:      Path to the reach graph file. If the file exists it is
+##                  read; if it does not, tRIBS generates the partition
+##                  in-process with METIS (using GRAPHOPTION above) and
+##                  writes for reuse. The partition is always sized
+##                  to the number of MPI processes.
+##
+##=========================================================================
+
+PARALLELMODE:             Serial Mode, Parallel, or Partitioning Mode Option
 1
 
-GRAPHOPTION:
-0
+GRAPHOPTION:              Reach partitioning method
+2
 
-GRAPHFILE:
+GRAPHFILE:                Reach connectivity filename
 data/model/graph_files/bigsp_upnconn_3nodes.reach
 
-OPTVIZ:
-0
-
-OUTVIZFILENAME:
-None
-
-OPTPERCOLATION:
-0
-
-CHANNELCONDUCTIVITY:
-0
-
-TRANSIENTCONDUCTIVITY:
-0
-
-TRANSIENTTIME:
-0
-
-CHANNELPOROSITY:
-0
-
-CHANPOREINDEX:
-0
-
-CHANPSIB:
-0
-
+##=========================================================================
+##
+##
+##				End
+##
+##
+##=========================================================================
